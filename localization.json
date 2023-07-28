@@ -1,4 +1,8 @@
 {
-  "helloWorld": "Witaj świecie kochany",
-  "second": "A tutaj drugi string"
+  "login": "Login",
+  "emailAddress": "Email address",
+  "password": "Password",
+  "loginToYourAccount": "Login to your Account",
+  "dontHaveAnAccount": "Don't have an account?",
+  "signUp": "Sign Up"
 }

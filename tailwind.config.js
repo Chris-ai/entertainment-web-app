@@ -7,13 +7,23 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        'base': '0.625rem'
+      },
+      colors:{
+        'primary-red': "#FC4747",
+        'dark-blue': "#10141E",
+        'greyish-blue': "#5A698F",
+        'semi-dark-blue': "#161D2F",
+        "white": "#FFF"
+      },
     },
     fontSize: {
-      hl: '2rem',
-      hm: '1.5rem',
-      hs: '1.125rem',
-      bm: '0.9375rem',
-      bs: '0.8125rem'
+      hl: '2rem', // 32px
+      hm: '1.5rem', // 24px
+      hs: '1.125rem', // 18px
+      bm: '0.9375rem', // 15px
+      bs: '0.8125rem' // 13px
     },
     fontWeight: {
       light: '300',
