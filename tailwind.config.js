@@ -23,7 +23,8 @@ module.exports = {
       hm: '1.5rem', // 24px
       hs: '1.125rem', // 18px
       bm: '0.9375rem', // 15px
-      bs: '0.8125rem' // 13px
+      bs: '0.8125rem', // 13px
+      xs: '0.6875rem'
     },
     fontWeight: {
       light: '300',

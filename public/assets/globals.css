@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background-color: #10141E;
+}
+
+@media (prefers-color-scheme: dark) {
+  /*:root {*/
+  /*  --foreground-rgb: 255, 255, 255;*/
+  /*  --background-start-rgb: 0, 0, 0;*/
+  /*  --background-end-rgb: 0, 0, 0;*/
+  /*}*/
+}
+
+body{
+  height: 100vh;
+  width: 100vw;
+  color: #FFF;
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.heading-l {
+  @apply font-light text-hl leading-normal tracking-[-0.5px]
+}
+
+.heading-m {
+  @apply font-light text-hm leading-normal
+}
+
+.heading-s {
+  @apply font-medium text-hm leading-normal
+}
+
+.heading-xs {
+  @apply font-medium text-hs leading-normal
+}
+
+.body-m {
+  @apply font-light text-bm leading-normal
+}
+
+.body-s {
+  @apply font-light text-bs leading-normal
+}
+
+.svg-hover > path {
+  fill: #FFFFFF;
+}

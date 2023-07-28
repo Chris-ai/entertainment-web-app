@@ -6,7 +6,8 @@ import Navbar from "@/components/navbar/Navbar";
 const font = Outfit({subsets: ['latin']})
 
 export const metadata = {
-    title: "e-web-app"
+    title: "e-web-app",
+    viewport: { width: "device-width", initialScale: 1 }
 }
 
 
