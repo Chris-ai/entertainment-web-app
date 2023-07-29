@@ -1,7 +1,7 @@
 const TrendingSlider = () => {
     return (
-        <div>
-            trendings
+        <div className={'w-full'}>
+            <p>Trending:)</p>
         </div>
     );
 };

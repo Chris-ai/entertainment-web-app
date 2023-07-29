@@ -6,5 +6,6 @@
   "dontHaveAnAccount": "Don't have an account?",
   "signUp": "Sign Up",
   "recommendedForYou": "Recommended for you",
-  "searchQueryPlaceholder": "Search for movies or TV series"
+  "searchQueryPlaceholder": "Search for movies or TV series",
+  "movies": "Movies"
 }
