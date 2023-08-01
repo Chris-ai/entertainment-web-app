@@ -1,6 +1,6 @@
 'use client'
 import Header from "@/components/common/Header";
-import React, {useCallback, useEffect, useMemo, useState} from "react";
+import React, {useMemo} from "react";
 import {MediaEntity} from "@/app/api/media/types";
 import useLocalization from "@/hooks/useLocalization";
 import MediaList from "@/components/common/MediaList";

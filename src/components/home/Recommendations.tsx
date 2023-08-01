@@ -1,6 +1,5 @@
 import useLocalization from "@/hooks/useLocalization";
 import Header from "@/components/common/Header";
-import MediaCard from "@/components/common/MediaCard";
 import {MediaEntity} from "@/app/api/media/types";
 import MediaList from "@/components/common/MediaList";
 import React from "react";
