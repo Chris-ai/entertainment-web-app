@@ -16,7 +16,7 @@ const Input:React.FC<IProps> = ({classNames, value, onChange, placeholder}) => {
     }
 
     return (
-        <div className={'w-full max-w-[320px]'}>
+        <div className={'w-full'}>
             <input
                 type={'text'}
                 value={value}

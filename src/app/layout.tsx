@@ -1,6 +1,7 @@
 import '../assets/globals.css'
 import {Outfit} from 'next/font/google'
 import Navbar from "@/components/navbar/Navbar";
+import Sidebar from "@/components/sidebar/Sidebar";
 
 
 const font = Outfit({subsets: ['latin']})
@@ -20,7 +21,10 @@ export default function RootLayout({
         <html lang='en'>
         <body className={font.className}>
         <Navbar/>
-        {children}
+        <div className={'lg:flex lg:gap-x-8'}>
+            <Sidebar />
+            {children}
+        </div>
         </body>
         </html>
     )

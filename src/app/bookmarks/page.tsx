@@ -1,13 +1,13 @@
 import Container from "@/components/common/Container";
-import Home from "@/components/home/Home";
-import {getRecommendations, getTrending} from "@/service/media/mediaService";
+import {getBookmarks} from "@/service/media/mediaService";
+import Bookmarks from "@/components/bookmarks/Bookmarks";
 
-export default async function Page(){
-    return(
+export default async function Page() {
+    const bookmarks = await getBookmarks();
+
+    return (
         <Container>
-           <div>
-               bookmarks ;)
-           </div>
+                <Bookmarks bookmarks={bookmarks}/>
         </Container>
     )
 }

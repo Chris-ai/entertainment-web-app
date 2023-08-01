@@ -49,3 +49,38 @@ export const getMovies = async (): Promise<MediaEntity[]> =>{
 
     return movies;
 }
+
+export const getTvSeries = async (): Promise<MediaEntity[]> =>{
+    let tvSeries: MediaEntity[] = [];
+
+    try{
+        const media: MediaEntity[] = await fetchMedia();
+        tvSeries = media.filter((media: MediaEntity) => {
+            if(media.category === 'TV Series'){
+                return media;
+            }
+        })
+    }catch(e) {
+        console.error(e);
+    }
+
+    return tvSeries;
+}
+
+
+export const getBookmarks = async (): Promise<MediaEntity[]> =>{
+    let bookmarks: MediaEntity[] = [];
+
+    try{
+        const media: MediaEntity[] = await fetchMedia();
+        bookmarks = media.filter((media: MediaEntity) => {
+            if(media.isBookmarked){
+                return media;
+            }
+        })
+    }catch(e) {
+        console.error(e);
+    }
+
+    return bookmarks;
+}

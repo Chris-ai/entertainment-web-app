@@ -7,8 +7,8 @@ const ProfileIcon: React.FC = () => {
         src={ProfileImage}
         alt={'profile-image'}
         className={'border border-white rounded-full'}
-        height={24}
-        width={24}
+        height={40}
+        width={40}
     />
 }
 

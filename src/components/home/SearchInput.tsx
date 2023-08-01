@@ -14,9 +14,9 @@ const SearchInput = () => {
         setQuery(value)
     }
     return (
-        <div className={'flex gap-x-4 items-start'}>
+        <div className={'flex gap-x-4 items-start w-full'}>
             <Image src={SearchIcon} alt={'search-icon'} width={24} height={24} />
-            <Input value={query} onChange={onChange} placeholder={t('searchQueryPlaceholder')} />
+            <Input value={query} onChange={onChange} placeholder={t('searchQueryPlaceholder')}/>
         </div>
     )
 }

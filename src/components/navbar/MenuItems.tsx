@@ -7,8 +7,9 @@ import Link from "next/link";
 import TvIcon from "@/components/common/icon/Tv";
 import {usePathname} from "next/navigation";
 import useNavigation from "@/hooks/useNavigation";
+import cn from "classnames";
 
-const MenuItems: React.FC = () => {
+const MenuItems: React.FC<{vertical?: boolean}> = ({vertical = false}) => {
     const pathname = usePathname();
     const {pages} = useNavigation();
 
@@ -16,7 +17,7 @@ const MenuItems: React.FC = () => {
     }, [pathname])
 
     return (
-        <div className={'flex gap-x-6 justify-center items-center'}>
+        <div className={cn('flex justify-center items-center', `${vertical ? 'flex-col gap-y-6' : 'flex-row gap-x-6'}`)}>
             <Link href={pages.homePage} className={'group/link'}>
                 <HomeIcon className={'group-hover/link:fill-white'} active={pathname === pages.homePage}/>
             </Link>
