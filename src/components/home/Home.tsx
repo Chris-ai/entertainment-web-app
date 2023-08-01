@@ -12,7 +12,7 @@ const Home: React.FC<IProps> = ({trending, recommendations}) => {
     return (
         <div className={'flex flex-col gap-y-6 w-full py-10'}>
             <SearchInput/>
-            <TrendingSlider/>
+            <TrendingSlider trending={trending}/>
             <Recommendations recommendations={recommendations}/>
         </div>
     )
