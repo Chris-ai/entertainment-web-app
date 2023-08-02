@@ -14,7 +14,7 @@ const Movies: React.FC<IProps> = ({movies}) => {
 
     return (
         <div className={'flex flex-col gap-y-6 w-full py-10'}>
-            <SearchInput />
+            <SearchInput/>
             <Header title={`${t('movies')}`}/>
             <MediaList media={movies}/>
         </div>

@@ -39,7 +39,7 @@ const MediaInfo: React.FC<{
     category: "Movie" | "TV Series",
     rating: string}> = ({year, category, rating}) => {
     return (
-        <div className={"flex gap-x-1.5 text-white text-opacity-75 justify-start items-center text-xs"}>
+        <div className={"flex gap-x-1.5 text-white text-opacity-75 justify-start items-center text-xs md:text-bm"}>
             <p>{year}</p>
             <div className={"h-[2px] w-[2px] bg-white"}></div>
             <Category category={category}/>
@@ -65,7 +65,7 @@ const MediaCard: React.FC<IProps> = ({mediaElement, variant = "default"}) => {
                     <div className={'hidden md:block'}>
                         <MediaInfo year={mediaElement.year} category={mediaElement.category} rating={mediaElement.rating} />
                     </div>
-                    <p className={"text-[0.875rem]"}>{mediaElement.title}</p>
+                    <p className={"text-[0.875rem] md:font-medium md:text-hs md:leading-normal"}>{mediaElement.title}</p>
                 </div>
 
                 <div className={'absolute right-4 bottom-4 md:right-6 md:bottom-6 block md:hidden'}>
@@ -82,7 +82,7 @@ const MediaCard: React.FC<IProps> = ({mediaElement, variant = "default"}) => {
             <MediaCardImage isBookmarked={mediaElement.isBookmarked} thumbnail={mediaElement.thumbnail} />
             <MediaInfo year={mediaElement.year} category={mediaElement.category} rating={mediaElement.rating} />
             <div>
-                <p className={"text-[0.875rem]"}>{mediaElement.title}</p>
+                <p className={"text-[0.875rem] md:font-medium md:text-hs md:leading-normal"}>{mediaElement.title}</p>
             </div>
         </div>
     );

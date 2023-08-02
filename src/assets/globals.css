@@ -8,6 +8,7 @@
 
 *{
   box-sizing: border-box;
+  transition: .2s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {

@@ -22,7 +22,7 @@ const Input:React.FC<IProps> = ({classNames, value, onChange, placeholder}) => {
                 value={value}
                 onChange={handleOnChange}
                 placeholder={placeholder}
-                className={cn('bg-transparent text-base placeholder-opacity-50 text-white outline-0 focus:border-b focus:border-b-greyish-blue w-full pb-4', classNames)}/>
+                className={cn('bg-transparent text-base placeholder-opacity-50 text-white outline-0 border-b border-b-transparent focus:border-b focus:border-b-greyish-blue w-full pb-4', classNames)}/>
         </div>
     );
 };
