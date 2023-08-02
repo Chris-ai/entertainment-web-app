@@ -4,8 +4,8 @@ import Image from "next/image";
 import CategoryMovies from "@/assets/icons/icon-category-movie.svg";
 import CategoryTv from "@/assets/icons/icon-category-tv.svg";
 import {MediaEntity} from "@/app/api/media/types";
-import MediaCardImage from "@/components/common/MediaCardImage";
-import MediaLargeCardImage from "@/components/common/MediaLargeCardImage";
+import MediaCardImage from "@/components/common/media/MediaCardImage";
+import MediaLargeCardImage from "@/components/common/media/MediaLargeCardImage";
 import BookmarkButton from "@/components/common/BookmarkButton";
 interface IProps {
     mediaElement: MediaEntity,

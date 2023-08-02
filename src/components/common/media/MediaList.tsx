@@ -1,5 +1,5 @@
 import {MediaEntity} from "@/app/api/media/types";
-import MediaCard from "@/components/common/MediaCard";
+import MediaCard from "@/components/common/media/MediaCard";
 import React from "react";
 
 interface IProps {

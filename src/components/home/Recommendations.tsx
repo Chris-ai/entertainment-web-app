@@ -1,7 +1,7 @@
 import useLocalization from "@/hooks/useLocalization";
 import Header from "@/components/common/Header";
 import {MediaEntity} from "@/app/api/media/types";
-import MediaList from "@/components/common/MediaList";
+import MediaList from "@/components/common/media/MediaList";
 import React from "react";
 interface IProps {
     recommendations: MediaEntity[]
