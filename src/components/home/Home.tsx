@@ -10,7 +10,7 @@ interface IProps {
 
 const Home: React.FC<IProps> = ({trending, recommendations}) => {
     return (
-        <div className={'flex flex-col gap-y-6 w-full py-10'}>
+        <div className={'flex flex-col gap-y-6 w-full py-10 overflow-x-auto'}>
             <SearchInput/>
             <TrendingSlider trending={trending}/>
             <Recommendations recommendations={recommendations}/>

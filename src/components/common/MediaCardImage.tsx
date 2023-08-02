@@ -24,9 +24,7 @@ const ResponsiveImage: React.FC<{imageSources: Thumbnail}> = ({imageSources}) =>
 const MediaCardImage:React.FC<IProps> = ({isBookmarked, thumbnail}) => {
     return (
         <div className={'flex justify-center items-center relative'}>
-            <div className={'absolute right-2 top-2 bg-dark-blue bg-opacity-25 rounded-full'}>
-                <BookmarkButton isBookmarked={isBookmarked} onClick={() => {}} />
-            </div>
+            <BookmarkButton isBookmarked={isBookmarked} onClick={() => {}} />
             <ResponsiveImage imageSources={thumbnail} />
         </div>
     );

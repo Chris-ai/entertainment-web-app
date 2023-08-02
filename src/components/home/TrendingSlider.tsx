@@ -13,7 +13,7 @@ const TrendingSlider: React.FC<IProps> = ({trending}) => {
     return (
         <>
             <Header title={t('trending')} />
-            <div className={'w-full'}>
+            <div className={'w-full grid grid-flow-col gap-x-4 md:gap-x-[40px] overflow-x-auto overscroll-x-contain hide-scrollbar'}>
                 {trending.map(mediaEntity =>
                     <MediaCard
                         key={`${mediaEntity.title}_${mediaEntity.year}_${mediaEntity.category}`}
