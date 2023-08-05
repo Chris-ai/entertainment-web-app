@@ -2,13 +2,11 @@ import Container from "@/components/common/Container";
 import Home from "@/components/home/Home";
 import {getRecommendations, getTrending} from "@/service/media/mediaService";
 
-export default async function Page(){
-    const trending = await getTrending();
-    const recommendations = await getRecommendations();
+export default function Page(){
 
     return(
         <Container>
-           <Home trending={trending} recommendations={recommendations} />
+           <Home />
         </Container>
     )
 }

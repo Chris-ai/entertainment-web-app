@@ -6,7 +6,7 @@ import {useState} from "react";
 import useLocalization from "@/hooks/useLocalization";
 
 
-const SearchInput = () => {
+const SearchInput:React.FC<{search: (value: string) => void}> = ({search}) => {
     const [inputValue, setInputValue] = useState<string>('');
     const [query, setQuery] = useState<string>('');
     const {t} = useLocalization();
@@ -16,14 +16,16 @@ const SearchInput = () => {
     }
 
     const onBlur = (value: string) => {
-        if(value && query !== value){
+        if(query !== value){
             setQuery(value)
+            search(value)
         }
     }
 
     const onKeyDown = (keyCode: string, value: string) => {
         if(keyCode === 'Enter' && query !== value){
             setQuery(value)
+            search(value)
         }
     }
 

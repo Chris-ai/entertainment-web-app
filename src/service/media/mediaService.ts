@@ -1,11 +1,10 @@
-import {fetchMedia} from "@/app/api/media/route";
 import {MediaEntity} from "@/app/api/media/types";
 
 export const getRecommendations = async (): Promise<MediaEntity[]> => {
     let recommendations: MediaEntity[] = [];
     try{
-        const media: MediaEntity[] = await fetchMedia();
-        recommendations = media.filter((media) => {
+        const media = await fetch('/api/media').then(res => res.json())
+        recommendations = media.filter((media:MediaEntity) => {
             if(!media.thumbnail.trending){
                 return media;
             }
@@ -20,8 +19,8 @@ export const getRecommendations = async (): Promise<MediaEntity[]> => {
 export const getTrending = async (): Promise<MediaEntity[]> => {
     let trending: MediaEntity[] = [];
     try{
-        const media: MediaEntity[] = await fetchMedia();
-        trending = media.filter((media) => {
+        const media = await fetch('/api/media').then(res => res.json())
+        trending = media.filter((media: MediaEntity) => {
             if(media.thumbnail.trending){
                 return media;
             }
@@ -33,13 +32,14 @@ export const getTrending = async (): Promise<MediaEntity[]> => {
     return trending;
 }
 
-export const getMovies = async (): Promise<MediaEntity[]> =>{
+export const getMovies = async (query?: string): Promise<MediaEntity[]> =>{
     let movies: MediaEntity[] = [];
 
     try{
-        const media: MediaEntity[] = await fetchMedia();
+        const media = await fetch('/api/media').then(res => res.json())
         movies = media.filter((media: MediaEntity) => {
-            if(media.category === 'Movie'){
+            const searchParam = query ? media.title.includes(query) : true;
+            if(media.category === 'Movie' && searchParam){
                 return media;
             }
         })
@@ -50,13 +50,14 @@ export const getMovies = async (): Promise<MediaEntity[]> =>{
     return movies;
 }
 
-export const getTvSeries = async (): Promise<MediaEntity[]> =>{
+export const getTvSeries = async (query?: string): Promise<MediaEntity[]> =>{
     let tvSeries: MediaEntity[] = [];
 
     try{
-        const media: MediaEntity[] = await fetchMedia();
+        const media = await fetch('/api/media').then(res => res.json())
         tvSeries = media.filter((media: MediaEntity) => {
-            if(media.category === 'TV Series'){
+            const searchParam = query ? media.title.includes(query) : true;
+            if(media.category === 'TV Series' && searchParam){
                 return media;
             }
         })
@@ -68,13 +69,14 @@ export const getTvSeries = async (): Promise<MediaEntity[]> =>{
 }
 
 
-export const getBookmarks = async (): Promise<MediaEntity[]> =>{
+export const getBookmarks = async (query?: string): Promise<MediaEntity[]> =>{
     let bookmarks: MediaEntity[] = [];
 
     try{
-        const media: MediaEntity[] = await fetchMedia();
+        const media = await fetch('/api/media').then(res => res.json())
         bookmarks = media.filter((media: MediaEntity) => {
-            if(media.isBookmarked){
+            const searchParam = query ? media.title.includes(query) : true;
+            if(media.isBookmarked && searchParam){
                 return media;
             }
         })
