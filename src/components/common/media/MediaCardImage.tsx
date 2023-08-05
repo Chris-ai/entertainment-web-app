@@ -15,9 +15,9 @@ const ResponsiveImage: React.FC<{imageSources: Thumbnail}> = ({imageSources}) =>
     const imageClassNames = 'rounded-lg mb-0.5 w-full'
     return(
         <>
-            <Image src={`/${imageSources.regular.small}`} alt={'media-card-image-small'} className={cn(imageClassNames,'block md:hidden')} width={164} height={110}/>
-            <Image src={`/${imageSources.regular.medium}`} alt={'media-card-image-medium'} className={cn(imageClassNames,'hidden md:block lg:hidden')} width={220} height={140}/>
-            <Image src={`/${imageSources.regular.large}`} alt={'media-card-image-large'} className={cn(imageClassNames,'hidden lg:block')} width={280} height={174}/>
+            <Image src={`${imageSources.regular.small}`} alt={'media-card-image-small'} className={cn(imageClassNames,'block md:hidden')} width={164} height={110}/>
+            <Image src={`${imageSources.regular.medium}`} alt={'media-card-image-medium'} className={cn(imageClassNames,'hidden md:block lg:hidden')} width={220} height={140}/>
+            <Image src={`${imageSources.regular.large}`} alt={'media-card-image-large'} className={cn(imageClassNames,'hidden lg:block')} width={280} height={174}/>
         </>
     )
 }
