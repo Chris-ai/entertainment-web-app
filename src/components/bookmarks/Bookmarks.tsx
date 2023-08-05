@@ -14,7 +14,6 @@ const Bookmarks: React.FC = () => {
     const [bookmarks, setBookmarks] = useState<MediaEntity[]>([]);
     const [isMediaLoading, setIsMediaLoading] = useState<boolean>(true);
 
-
     const fetchData = async (query?: string) => {
         setIsMediaLoading(true)
         const movies = await getBookmarks(query !== '' ? query : undefined)

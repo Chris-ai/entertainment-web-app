@@ -7,7 +7,8 @@ import BookmarkButton from "@/components/common/BookmarkButton";
 
 interface IProps {
     isBookmarked: boolean,
-    thumbnail: Thumbnail
+    thumbnail: Thumbnail,
+    onClick: () => void
 }
 
 const ResponsiveImage: React.FC<{imageSources: Thumbnail}> = ({imageSources}) => {
@@ -21,10 +22,14 @@ const ResponsiveImage: React.FC<{imageSources: Thumbnail}> = ({imageSources}) =>
     )
 }
 
-const MediaCardImage:React.FC<IProps> = ({isBookmarked, thumbnail}) => {
+const MediaCardImage:React.FC<IProps> = ({isBookmarked, thumbnail, onClick}) => {
+
+    const handleOnClick = () => {
+        onClick();
+    }
     return (
         <div className={'flex justify-center items-center relative'}>
-            <BookmarkButton isBookmarked={isBookmarked} onClick={() => {}} />
+            <BookmarkButton isBookmarked={isBookmarked} onClick={handleOnClick} />
             <ResponsiveImage imageSources={thumbnail} />
         </div>
     );

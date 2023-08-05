@@ -24,9 +24,14 @@ const Bookmark: React.FC<{isBookmarked: boolean}> = ({isBookmarked}) => {
 
 
 const BookmarkButton: React.FC<IProps> = ({isBookmarked, onClick}) => {
+
+    const handleOnClick = () => {
+        onClick();
+    }
+
     return (
         <div className={'absolute right-2 top-2 bg-dark-blue bg-opacity-25 rounded-full'}>
-            <Button appearance={'transparent'} type={'icon'} onClick={onClick} className={'p-2'}>
+            <Button appearance={'transparent'} type={'icon'} onClick={handleOnClick} className={'p-2'}>
                 <Bookmark isBookmarked={isBookmarked} />
             </Button>
         </div>

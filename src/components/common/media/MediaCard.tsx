@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import Image from "next/image";
 import CategoryMovies from "@/assets/icons/icon-category-movie.svg";
 import CategoryTv from "@/assets/icons/icon-category-tv.svg";
@@ -7,6 +7,8 @@ import {MediaEntity} from "@/app/api/media/types";
 import MediaCardImage from "@/components/common/media/MediaCardImage";
 import MediaLargeCardImage from "@/components/common/media/MediaLargeCardImage";
 import BookmarkButton from "@/components/common/BookmarkButton";
+import {bookmarkMedia} from "@/service/media/mediaService";
+import {usePathname, useRouter} from "next/navigation";
 interface IProps {
     mediaElement: MediaEntity,
     variant?: "default" | "large"
@@ -50,12 +52,21 @@ const MediaInfo: React.FC<{
 };
 
 const MediaCard: React.FC<IProps> = ({mediaElement, variant = "default"}) => {
+    const [mediaElementBookmark, setMediaElementBookmark] = useState<boolean>(mediaElement.isBookmarked)
+    const router = useRouter();
+    const pathName = usePathname();
+
+    const handleBookmarkMedia = () => {
+        setMediaElementBookmark(!mediaElementBookmark)
+        bookmarkMedia(mediaElement, !mediaElementBookmark).then();
+    }
+
 
     if(variant === "large") {
         return (
             <div className={"flex flex-col justify-between w-[240px] md:w-[470px] relative"}>
                 <MediaLargeCardImage thumbnail={mediaElement.thumbnail} />
-                <BookmarkButton isBookmarked={mediaElement.isBookmarked} onClick={() => {}} />
+                <BookmarkButton isBookmarked={mediaElementBookmark} onClick={handleBookmarkMedia} />
                 <div className={"absolute left-4 bottom-4 md:left-6 md:bottom-6 flex flex-col gap-y-1.5"}>
                     <div className={"flex md:hidden gap-x-1.5 text-white text-opacity-75 justify-start items-center text-xs"}>
                         <p>{mediaElement.year}</p>
@@ -79,7 +90,7 @@ const MediaCard: React.FC<IProps> = ({mediaElement, variant = "default"}) => {
 
     return (
         <div className={"flex flex-col gap-y-1.5 max-w-[280px]"}>
-            <MediaCardImage isBookmarked={mediaElement.isBookmarked} thumbnail={mediaElement.thumbnail} />
+            <MediaCardImage isBookmarked={mediaElementBookmark} thumbnail={mediaElement.thumbnail} onClick={handleBookmarkMedia}/>
             <MediaInfo year={mediaElement.year} category={mediaElement.category} rating={mediaElement.rating} />
             <div>
                 <p className={"text-[0.875rem] md:font-medium md:text-hs md:leading-normal"}>{mediaElement.title}</p>

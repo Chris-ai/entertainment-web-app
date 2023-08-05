@@ -20,3 +20,12 @@ export async function GET(req: Request){
 
     return new Response(fileContents)
 }
+
+export async function PUT(req: Request) {
+    const jsonDirectory = path.join(process.cwd());
+    if(req.method !== 'PUT'){
+    throw new Error('Method not allowed')
+    }
+    const body = await req.json();
+    await fs.writeFile(jsonDirectory + '/data.json', Buffer.from(JSON.stringify(body)));
+}
