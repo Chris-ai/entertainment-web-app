@@ -33,11 +33,11 @@ const Home: React.FC = () => {
     }
 
     const trendingTitle = useMemo(() => {
-        return query ? `Found ${trending.length} results for ${query}` : `${t('movies')}`;
+        return query ? `Found ${trending.length} results for ${query}` : `${t('trending')}`;
     }, [trending])
 
     const recommendedTitle = useMemo(() => {
-        return query ? `Found ${recommendations.length} results for ${query}` : `${t('movies')}`;
+        return query ? `Found ${recommendations.length} results for ${query}` : `${t('recommendedForYou')}`;
     }, [recommendations])
 
     return (
