@@ -38,7 +38,7 @@ const Input:React.FC<IProps> = ({classNames, value, onChange, placeholder, onBlu
                 onBlur={handleOnBlur}
                 onKeyDown={handleOnKeyDown}
                 placeholder={placeholder}
-                className={cn('bg-transparent text-base placeholder-opacity-50 text-white outline-0 border-b border-b-transparent focus:border-b focus:border-b-greyish-blue w-full pb-4', classNames)}/>
+                className={cn('bg-transparent text-base placeholder-opacity-50 text-white outline-0 border-b border-b-transparent focus:border-b focus:border-b-greyish-blue w-full pb-4 sm:font-light sm:text-hm sm:leading-normal', classNames)}/>
         </div>
     );
 };
