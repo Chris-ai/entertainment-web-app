@@ -1,6 +1,5 @@
 <div align="center">
 <img src="public/logo.svg" alt='logo'></img>
-<h3>Entertainment Web App<h3>
 </div>
 
 ## 💻 Project Overview
