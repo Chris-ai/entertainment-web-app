@@ -1,6 +1,7 @@
 import path from "path";
 import { promises as fs } from "fs";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   if (req.method !== "GET") {
@@ -26,12 +27,13 @@ export async function PUT(req: Request) {
   );
 
   revalidateCache();
-  return new Response();
+  return NextResponse.json({});
 }
 
 const revalidateCache = () => {
-  revalidatePath("/");
-  revalidatePath("/movies");
-  revalidatePath("/tv");
-  revalidatePath("/bookmarks");
+  revalidateTag("trending");
+  revalidateTag("movies");
+  revalidateTag("tvSeries");
+  revalidateTag("bookmarks");
+  revalidateTag("recommendations");
 };

@@ -5,7 +5,9 @@ export const getRecommendations = async (
 ): Promise<MediaEntity[]> => {
   let recommendations: MediaEntity[] = [];
   try {
-    const media = await fetch("/api/media").then((res) => res.json());
+    const media = await fetch("/api/media", {
+      next: { tags: ["recommendations"] },
+    }).then((res) => res.json());
     recommendations = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -24,7 +26,9 @@ export const getRecommendations = async (
 export const getTrending = async (query?: string): Promise<MediaEntity[]> => {
   let trending: MediaEntity[] = [];
   try {
-    const media = await fetch("/api/media").then((res) => res.json());
+    const media = await fetch("/api/media", {
+      next: { tags: ["trending"] },
+    }).then((res) => res.json());
     trending = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -44,7 +48,9 @@ export const getMovies = async (query?: string): Promise<MediaEntity[]> => {
   let movies: MediaEntity[] = [];
 
   try {
-    const media = await fetch("/api/media").then((res) => res.json());
+    const media = await fetch("/api/media", {
+      next: { tags: ["movies"] },
+    }).then((res) => res.json());
     movies = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -64,7 +70,9 @@ export const getTvSeries = async (query?: string): Promise<MediaEntity[]> => {
   let tvSeries: MediaEntity[] = [];
 
   try {
-    const media = await fetch("/api/media").then((res) => res.json());
+    const media = await fetch("/api/media", {
+      next: { tags: ["tvSeries"] },
+    }).then((res) => res.json());
     tvSeries = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -84,7 +92,9 @@ export const getBookmarks = async (query?: string): Promise<MediaEntity[]> => {
   let bookmarks: MediaEntity[] = [];
 
   try {
-    const media = await fetch("/api/media").then((res) => res.json());
+    const media = await fetch("/api/media", {
+      next: { tags: ["bookmarks"] },
+    }).then((res) => res.json());
     bookmarks = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())

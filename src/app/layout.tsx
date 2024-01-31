@@ -1,31 +1,30 @@
-import '../assets/globals.css'
-import {Outfit} from 'next/font/google'
+import "../assets/globals.css";
+import { Outfit } from "next/font/google";
 import Navbar from "@/components/navbar/Navbar";
 import Sidebar from "@/components/sidebar/Sidebar";
+import Container from "@/components/common/Container";
 
-
-const font = Outfit({subsets: ['latin']})
+const font = Outfit({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "e-web-app",
-    viewport: { width: "device-width", initialScale: 1 }
-}
-
+  title: "e-web-app",
+  viewport: { width: "device-width", initialScale: 1 },
+};
 
 export default function RootLayout({
-                                       children
-                                   }: {
-    children: React.ReactNode
+  children,
+}: {
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang='en'>
-        <body className={font.className}>
-        <Navbar/>
-        <div className={'lg:flex lg:gap-x-8'}>
-            <Sidebar />
-            {children}
+  return (
+    <html lang="en">
+      <body className={font.className}>
+        <Navbar />
+        <div className={"lg:flex lg:gap-x-8"}>
+          <Sidebar />
+          <Container>{children}</Container>
         </div>
-        </body>
-        </html>
-    )
+      </body>
+    </html>
+  );
 }
