@@ -19,11 +19,14 @@ export async function PUT(req: Request) {
     throw new Error("Method not allowed");
   }
   const body = await req.json();
-  revalidateCache();
+
   await fs.writeFile(
     jsonDirectory + "/data.json",
     Buffer.from(JSON.stringify(body))
   );
+
+  revalidateCache();
+  return new Response();
 }
 
 const revalidateCache = () => {
