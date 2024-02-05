@@ -111,8 +111,7 @@ export const getBookmarks = async (query?: string): Promise<MediaEntity[]> => {
 };
 
 export const bookmarkMedia = async (
-  mediaElement: MediaEntity,
-  value: boolean
+  mediaElement: MediaEntity
 ): Promise<void> => {
   try {
     const mediaResponse = await fetch("/api/media").then((res) => res.json());
@@ -122,7 +121,7 @@ export const bookmarkMedia = async (
         mediaElement.category === e.category &&
         mediaElement.year === e.year
       ) {
-        e.isBookmarked = value;
+        e.isBookmarked = !e.isBookmarked;
       }
     });
 
