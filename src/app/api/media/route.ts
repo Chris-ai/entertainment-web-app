@@ -1,39 +1,30 @@
-import path from "path";
-import { promises as fs } from "fs";
-import { revalidatePath, revalidateTag } from "next/cache";
 import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   if (req.method !== "GET") {
     throw new Error("Method not allowed");
   }
-
-  const jsonDirectory = path.join(process.cwd());
-  const fileContents = await fs.readFile(jsonDirectory + "/data.json", "utf8");
-
-  return new Response(fileContents);
+  const response = await fetch(`${process.env.API_URL}`);
+  const json = await response.json();
+  return NextResponse.json({ media: json });
 }
 
 export async function PUT(req: Request) {
-  const jsonDirectory = path.join(process.cwd());
   if (req.method !== "PUT") {
     throw new Error("Method not allowed");
   }
   const body = await req.json();
 
-  await fs.writeFile(
-    jsonDirectory + "/data.json",
-    Buffer.from(JSON.stringify(body))
-  );
+  const editResponse = await fetch(`${process.env.API_URL}/${body.id}`, {
+    method: req.method,
+    body: JSON.stringify(body),
+  });
 
-  revalidateCache();
-  return NextResponse.json({});
+  const res = await editResponse.json();
+
+  if (res) {
+    return NextResponse.json({ media: res, status: 200 });
+  } else {
+    return NextResponse.json({ media: null, status: 500 });
+  }
 }
-
-const revalidateCache = () => {
-  revalidateTag("trending");
-  revalidateTag("movies");
-  revalidateTag("tvSeries");
-  revalidateTag("bookmarks");
-  revalidateTag("recommendations");
-};
