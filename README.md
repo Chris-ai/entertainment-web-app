@@ -25,11 +25,19 @@
 
 <img src="public/preview.jpg" alt='preview-image'></img>
 
-## 🟢 Live Demo
+## 🚀 Get Started
 
-<h3 align="justify">
-Access the website here: <a href="https://entertainment-web-app-beige.vercel.app/">[link]</a>
-</h3>
+Install Required Dependencies
+
+```
+pnpm install
+```
+
+Run Development Server
+
+```
+pnpm run dev
+```
 
 ## 📚 Tech Stack
 
