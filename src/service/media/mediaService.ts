@@ -5,10 +5,9 @@ export const getRecommendations = async (
 ): Promise<MediaEntity[]> => {
   let recommendations: MediaEntity[] = [];
   try {
-    const response = await fetch("/api/media", {
-      next: { tags: ["recommendations"] },
-    });
+    const response = await fetch("/api/media");
     const { media } = await response.json();
+
     recommendations = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -27,10 +26,9 @@ export const getRecommendations = async (
 export const getTrending = async (query?: string): Promise<MediaEntity[]> => {
   let trending: MediaEntity[] = [];
   try {
-    const response = await fetch("/api/media", {
-      next: { tags: ["recommendations"] },
-    });
+    const response = await fetch("/api/media");
     const { media } = await response.json();
+
     trending = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -50,9 +48,7 @@ export const getMovies = async (query?: string): Promise<MediaEntity[]> => {
   let movies: MediaEntity[] = [];
 
   try {
-    const response = await fetch("/api/media", {
-      next: { tags: ["recommendations"] },
-    });
+    const response = await fetch("/api/media");
     const { media } = await response.json();
     movies = media.filter((media: MediaEntity) => {
       const searchParam = query
@@ -73,9 +69,7 @@ export const getTvSeries = async (query?: string): Promise<MediaEntity[]> => {
   let tvSeries: MediaEntity[] = [];
 
   try {
-    const response = await fetch("/api/media", {
-      next: { tags: ["recommendations"] },
-    });
+    const response = await fetch("/api/media");
     const { media } = await response.json();
     tvSeries = media.filter((media: MediaEntity) => {
       const searchParam = query
@@ -96,11 +90,8 @@ export const getBookmarks = async (query?: string): Promise<MediaEntity[]> => {
   let bookmarks: MediaEntity[] = [];
 
   try {
-    const response = await fetch("/api/media", {
-      next: { tags: ["recommendations"] },
-    });
+    const response = await fetch("/api/media");
     const { media } = await response.json();
-
     bookmarks = media.filter((media: MediaEntity) => {
       const searchParam = query
         ? media.title.toLowerCase().includes(query.toLowerCase())
@@ -120,16 +111,22 @@ export const bookmarkMedia = async (
   mediaElement: MediaEntity
 ): Promise<void> => {
   try {
-    const response = await fetch("/api/media", {
-      method: "PUT",
-      body: JSON.stringify(mediaElement),
+    const response = await fetch("/api/media");
+    const { media } = await response.json();
+    media.map((e: MediaEntity) => {
+      if (
+        mediaElement.title === e.title &&
+        mediaElement.category === e.category &&
+        mediaElement.year === e.year
+      ) {
+        e.isBookmarked = !e.isBookmarked;
+      }
     });
-    const { media, status } = await response.json();
-    if (status === 200) {
-      return media;
-    }
 
-    console.error("Something went wrong :(");
+    await fetch("/api/media", {
+      method: "PUT",
+      body: JSON.stringify(media),
+    });
   } catch (e) {
     console.error(e);
   }

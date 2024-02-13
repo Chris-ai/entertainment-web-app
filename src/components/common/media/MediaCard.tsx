@@ -71,10 +71,7 @@ const MediaCard: React.FC<IProps> = ({ mediaElement, variant = "default" }) => {
 
   const handleBookmarkMedia = async () => {
     setMediaElementBookmark(!mediaElementBookmark);
-    await bookmarkMedia({
-      ...mediaElement,
-      isBookmarked: !mediaElement.isBookmarked,
-    });
+    await bookmarkMedia(mediaElement);
   };
 
   if (variant === "large") {
